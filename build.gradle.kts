@@ -20,6 +20,7 @@ repositories {
 dependencies {
     implementation(libs.vertx.core)
     implementation(libs.vertx.web)
+    implementation(libs.vertx.pg.client)
 
     testImplementation(libs.junit.jupiter)
     testRuntimeOnly(libs.junit.platform.launcher)
