@@ -1,8 +1,12 @@
+import com.github.spotbugs.snom.Confidence
+import com.github.spotbugs.snom.Effort
+import com.github.spotbugs.snom.SpotBugsTask
 
 plugins {
     java
     application
     checkstyle
+    alias(libs.plugins.spotbugs)
 }
 
 group = "io.github.jccrisostomo"
@@ -40,4 +44,19 @@ checkstyle {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+spotbugs {
+    ignoreFailures = false
+    effort = Effort.MAX
+    reportLevel = Confidence.MEDIUM
+}
+
+tasks.withType<SpotBugsTask>().configureEach {
+    reports.create("html") {
+        required = true
+        outputLocation = layout.buildDirectory
+            .file("reports/spotbugs/${this@configureEach.name}.html")
+        setStylesheet("fancy-hist.xsl")
+    }
 }
