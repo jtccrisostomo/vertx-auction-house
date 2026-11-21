@@ -47,6 +47,21 @@ and PostgreSQL.
 
 On Windows, use `.\gradlew.bat` instead of `./gradlew`.
 
+### Test Coverage
+
+Generate the JaCoCo coverage report:
+
+```bash
+./gradlew jacocoTestReport
+```
+
+The HTML report is available at:
+
+`build/reports/jacoco/test/html/index.html`
+
+Coverage and verification reports are also available
+as artifacts in GitHub Actions workflow runs.
+
 ## Current Endpoints
 
 | Method | Endpoint | Description |
