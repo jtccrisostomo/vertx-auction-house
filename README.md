@@ -132,12 +132,32 @@ docker compose run --rm flyway validate
 Previously applied migrations must not be modified.
 Create a new versioned migration for schema changes.
 
+### Application Configuration
+
+The application requires the following environment variables:
+
+| Variable | Default |
+|----------|---------|
+| POSTGRES_HOST | 127.0.0.1 |
+| POSTGRES_PORT | 5432 |
+| POSTGRES_DB | Required |
+| POSTGRES_USER | Required |
+| POSTGRES_PASSWORD | Required |
+
+Set these variables in the application process environment
+before starting the application.
+
+Docker Compose reads `.env` automatically, but the Java
+application requires environment variables to be exported.
+
+Never commit database credentials.
 
 ## Current Endpoints
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | GET | /health | Application health check |
+| GET | /ready | Database connectivity check |
 
 
 ## Development Workflow

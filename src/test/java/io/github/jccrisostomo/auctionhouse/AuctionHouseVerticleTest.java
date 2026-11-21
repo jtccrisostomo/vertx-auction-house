@@ -1,6 +1,7 @@
 
 package io.github.jccrisostomo.auctionhouse;
 
+import io.github.jccrisostomo.auctionhouse.config.DatabaseConfig;
 import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
 import org.junit.jupiter.api.AfterEach;
@@ -24,7 +25,15 @@ class AuctionHouseVerticleTest {
     @BeforeEach
     void setUp() throws Exception {
         vertx = Vertx.vertx();
-        verticle = new AuctionHouseVerticle(0);
+        DatabaseConfig databaseConfig = new DatabaseConfig(
+                "127.0.0.1",
+                5432,
+                "test_db",
+                "test_user",
+                "test_only"
+        );
+
+        verticle = new AuctionHouseVerticle(0, databaseConfig);
 
         vertx.deployVerticle(verticle)
                 .toCompletionStage()

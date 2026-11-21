@@ -9,6 +9,7 @@ jacoco = "0.8.15"
 [libraries]
 vertx-core = { module = "io.vertx:vertx-core", version.ref = "vertx" }
 vertx-web = { module = "io.vertx:vertx-web", version.ref = "vertx" }
+vertx-pg-client = { module = "io.vertx:vertx-pg-client", version.ref = "vertx" }
 
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
 junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher", version.ref = "junit-jupiter" }
