@@ -53,6 +53,36 @@ On Windows, use `.\gradlew.bat` instead of `./gradlew`.
 |--------|----------|-------------|
 | GET | /health | Application health check |
 
+
+## Development Workflow
+
+### Git Hooks
+
+Enable the repository's Git hooks after cloning:
+
+```bash
+git config --local core.hooksPath .githooks
+```
+
+The following checks run automatically:
+
+| Hook | Verification |
+|------|--------------|
+| pre-commit | Checkstyle |
+| commit-msg | Conventional Commit format |
+| pre-push | Build, tests, and static analysis |
+
+### Contributing
+
+1. Create a feature branch from main.
+2. Implement changes and write tests.
+3. Use Conventional Commit messages.
+4. Open a pull request.
+5. Ensure all CI checks pass.
+6. Squash and merge.
+7. Delete the merged branch.
+
+
 ## Project Status
 
 Under active development.

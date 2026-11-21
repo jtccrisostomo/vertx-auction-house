@@ -1,0 +1,14 @@
+#!/bin/sh
+set -e
+
+commit_message=$(head -n 1 "$1")
+pattern='^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\([a-zA-Z0-9._/-]+\))?!?: .+'
+
+if ! printf '%s\n' "$commit_message" | grep -Eq "$pattern"; then
+    echo "[commit-msg] Invalid commit message."
+    echo "Expected format: type(scope): description"
+    echo "Example: feat(auction): implement auction creation"
+    exit 1
+fi
+
+echo "[commit-msg] Commit message validated."
