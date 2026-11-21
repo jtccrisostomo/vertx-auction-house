@@ -38,3 +38,12 @@ jobs:
 
       - name: Build and verify
         run: ./gradlew clean build --no-daemon
+
+      - name: Upload verification reports
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: verification-reports
+          path: build/reports/
+          retention-days: 14
+          if-no-files-found: warn

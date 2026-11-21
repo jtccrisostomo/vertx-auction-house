@@ -6,6 +6,7 @@ plugins {
     java
     application
     checkstyle
+    jacoco
     alias(libs.plugins.spotbugs)
 }
 
@@ -44,6 +45,7 @@ checkstyle {
 
 tasks.test {
     useJUnitPlatform()
+    finalizedBy(tasks.jacocoTestReport)
 }
 
 spotbugs {
@@ -58,5 +60,19 @@ tasks.withType<SpotBugsTask>().configureEach {
         outputLocation = layout.buildDirectory
             .file("reports/spotbugs/${this@configureEach.name}.html")
         setStylesheet("fancy-hist.xsl")
+    }
+}
+
+jacoco {
+    toolVersion = libs.versions.jacoco.get()
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
+
+    reports {
+        html.required = true
+        xml.required = true
+        csv.required = false
     }
 }

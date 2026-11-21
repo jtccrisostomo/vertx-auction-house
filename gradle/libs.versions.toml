@@ -4,6 +4,7 @@ vertx = "5.2.3"
 junit-jupiter = "6.0.1"
 checkstyle = "10.24.0"
 spotbugs = "6.5.13"
+jacoco = "0.8.15"
 
 [libraries]
 vertx-core = { module = "io.vertx:vertx-core", version.ref = "vertx" }
