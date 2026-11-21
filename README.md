@@ -62,6 +62,48 @@ The HTML report is available at:
 Coverage and verification reports are also available
 as artifacts in GitHub Actions workflow runs.
 
+
+### Database Setup
+
+The project uses PostgreSQL 17 with Docker Compose.
+
+Create a local environment configuration from
+`.env.example` and set a development password.
+
+On Windows:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+On Linux or macOS:
+
+```bash
+cp .env.example .env
+```
+
+Start PostgreSQL:
+
+```bash
+docker compose up -d
+```
+
+Verify the database container:
+
+```bash
+docker compose ps
+```
+
+Stop PostgreSQL:
+
+```bash
+docker compose down
+```
+
+Database credentials are configured through environment
+variables. Do not commit the `.env` file.
+
+
 ## Current Endpoints
 
 | Method | Endpoint | Description |
