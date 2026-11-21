@@ -22,7 +22,13 @@ dependencies {
     implementation(libs.vertx.web)
     implementation(libs.vertx.pg.client)
 
+    testImplementation(libs.testcontainers.postgresql)
+    testImplementation(libs.testcontainers.junit.jupiter)
     testImplementation(libs.junit.jupiter)
+    testImplementation(libs.flyway.core)
+
+    testRuntimeOnly(libs.flyway.postgresql)
+    testRuntimeOnly(libs.postgresql.jdbc)
     testRuntimeOnly(libs.junit.platform.launcher)
 }
 
