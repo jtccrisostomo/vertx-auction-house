@@ -21,5 +21,25 @@ services:
       retries: 10
       start_period: 10s
 
+  flyway:
+    image: flyway/flyway:13.13.0
+    profiles: [ "migration" ]
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+    environment:
+      FLYWAY_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB}
+      FLYWAY_USER: ${POSTGRES_USER}
+      FLYWAY_PASSWORD: ${POSTGRES_PASSWORD}
+      FLYWAY_LOCATIONS: filesystem:/flyway/sql
+      FLYWAY_CLEAN_DISABLED: "true"
+
+    volumes:
+      - ./src/main/resources/db/migration:/flyway/sql:ro
+
+    command: migrate
+
 volumes:
   postgres-data:

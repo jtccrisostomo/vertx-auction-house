@@ -103,6 +103,35 @@ docker compose down
 Database credentials are configured through environment
 variables. Do not commit the `.env` file.
 
+### Database Migrations
+
+Database schema changes are managed using Flyway.
+
+Migration files are located in:
+
+`src/main/resources/db/migration/`
+
+Apply pending migrations:
+
+```bash
+docker compose run --rm flyway migrate
+```
+
+Inspect migration status:
+
+```bash
+docker compose run --rm flyway info
+```
+
+Validate applied migrations:
+
+```bash
+docker compose run --rm flyway validate
+```
+
+Previously applied migrations must not be modified.
+Create a new versioned migration for schema changes.
+
 
 ## Current Endpoints
 
