@@ -2,6 +2,7 @@
 plugins {
     java
     application
+    checkstyle
 }
 
 group = "io.github.jccrisostomo"
@@ -27,6 +28,14 @@ java {
 
 application {
     mainClass = "io.github.jccrisostomo.auctionhouse.AuctionHouseApplication"
+}
+
+checkstyle {
+    toolVersion = libs.versions.checkstyle.get()
+    configFile = file("config/checkstyle/checkstyle.xml")
+    isIgnoreFailures = false
+    maxErrors = 0
+    maxWarnings = 0
 }
 
 tasks.test {
